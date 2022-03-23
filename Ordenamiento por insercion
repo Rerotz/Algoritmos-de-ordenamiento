@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento por insercion</title>
+    <script type="text/javascript">
+        let vector = [20,16,2,3,6,1,7,8,9,11,13,4,14,5,10,12,14,17,15,18,19]
+        function ordenar()
+        {
+            for(let i = 1; i < vector.length; i++) 
+            {
+                const actual = vector[i];
+                let j = i;
+                while(j>0 && vector[j-1]>actual)
+                {
+                    vector[j]=vector[j-1];
+                    j=j-1;
+                }
+                vector[j]=actual;
+            }
+            
+            document.getElementById("lblResultado").innerHTML = "La lista de numeros ordenada:" + vector; 
+        }   
+        function asintota(){
+        document.getElementById("lblResultado").innerHTML = "La funcion asintota es F(n)= n^2 + 4n + 3 ";
+        }
+        function orden_lineal(){
+        document.getElementById("lblResultado").innerHTML = "El orden de complejidad es Cuadrático-O(n^2) ";
+        }
+        
+    </script>
+</head>
+<body>
+    <h1>Ordenamiento por insercion</h1>
+    <h>La lista de numeros que se va a ordenar:</h>
+    <h>[20,16,2,3,6,1,7,8,9,11,13,4,14,5,10,12,14,17,15,18,19]</h>
+    <p>
+        <button type="button" onclick="ordenar()">Ordenar</button>
+        <button type="button" onclick="asintota()">Funcion asintota</button>
+        <button type="button" onclick="orden_lineal()">Orden de complejidad</button>
+    </p>
+    <p id = "lblResultado"></p>
+</body>
+</html>
