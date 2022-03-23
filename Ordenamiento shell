@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento shell</title>
+    <script type="text/javascript">
+        let datos = [8,5,3,9,1,4,7]
+        function shell(datos){
+            let incremento = datos.length / 2;
+
+            while (incremento > 0){
+                for (let i = 0; i < datos.length; i++) {
+                  let j = i;
+                  let dato = datos[i];
+                  
+                  while (j >= incremento && datos[j - incremento] > dato){
+                      datos[j] = datos[j - incremento];
+                      j -= incremento;
+                  }
+
+                  datos[j] = dato;
+                }
+
+                if (incremento == 2) {
+                    incremento = 1;
+                } else {
+                    incremento = parseInt(incremento * 5 / 11);
+                }
+            }
+            return datos;
+            
+               
+        }
+            document.getElementById("lblResultado").innerHTML="la lista ordenada: "+ datos; 
+        
+       
+
+    </script>
+</head>
+<body>
+    <h1>Ordenamiento Shell</h1>
+    <h>lista de numeros para ordenar:</h>
+    <h>[8,5,3,9,1,4,7]</h>
+    
+    <p>
+        <button type="button" onclick="shell()">ordenar</button>
+        
+    </p>
+    
+    <p id = "lblResultado"></p>
+    
+</body>
+</html>
