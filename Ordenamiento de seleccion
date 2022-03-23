@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento por seleccion</title>
+    <script type="text/javascript">
+        let numero = [40,23,6,11,1,33,12,9,21,13,8,2,14,3,10]
+        function seleccion()
+        {
+           var n = numero.length; 
+            for(var i = 0; i < n; i++) {
+                var min = i;
+                for(var j = i+1; j < n; j++){
+                   if(numero[j] < numero[min]) {
+                    min=j; 
+                   }
+                }
+                if (min != i) {
+                   var tmp = numero[i]; 
+                   numero[i] = numero[min];
+                   numero[min] = tmp;      
+                }
+            }      
+            document.getElementById("lblResultado").innerHTML = "La lista de numeros ordenada es: " + numero  + " <br> Su función asíntota es: (n^2 + n)/2 <br> Su orden de complejidad es: Cuadrático"   ;
+            
+        }   
+        
+    </script>
+</head>
+<body>
+    <h1>Ordenamiento por seleccion</h1>
+    <h>La lista de numeros que se va a ordenar:</h>
+    <h>[40,23,6,11,1,33,12,9,21,13,8,2,14,3,10]</h>
+    <p>
+        <button type="button" onclick="seleccion()">Ordenar</button>
+    </p>
+    <p id = "lblResultado"></p>
+    
+</body>
+</html>
