@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang-"en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv-"X-UA-Compatible" content-"IE-edge">
+    <meta name-"viewport" content-"width-device-width,initial-scale=1.0">
+    <title>Ordenamiento por mezcla</title>
+    <script type="text/javascript">
+function merge(list, start, middle, end) {
+  let i = start, j = middle, newList = [];
+  while (middle > i || end > j) {
+      if (i < middle && j < end) {
+          list[i] < list[j] ? newList.push(list[i++]) : newList.push(list[j++]);
+      } else {
+          i < middle ? newList.push(list[i++]) : newList.push(list[j++]);
+      }
+  }
+  newList.forEach((v,k) => list[start + k] = v);
+}
+function mergeSort(list, start, end) {
+  start = start === undefined ? 0 : start;
+  end = end === undefined ? list.length : end;
+  if (end - start > 2) {
+      mergeSort(list, start, Math.floor((end + start) / 2));
+      mergeSort(list, Math.floor((end + start) / 2), end);
+      merge(list, start, Math.floor((end + start) / 2), end)
+  } else if (end - start === 2 && list[start] > list[end - 1]) {
+      const tmp = list[start];
+      list[start] = list[end - 1];
+      list[end - 1] = tmp;
+  }
+}
+var array = [5, 4, 6, 3, 0, 7, 2, 1, 9, 8];
+
+document.write("el ordenamiento inicial es: " + array + "<br>");
+mergeSort(array)
+
+document.write("La lista ordenada por mezcla es: " + array + "<br>");
+</script>
+</head>
+<body>
+
+</body>
+</html>
