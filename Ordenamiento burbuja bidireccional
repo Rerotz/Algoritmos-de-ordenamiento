@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang-"en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv-"X-UA-Compatible" content-"IE-edge">
+    <meta name-"viewport" content-"width-device-width,initial-scale=1.0">
+    <title>Ordenamiento por burbuja bidireccional</title>
+    <script type="text/javascript">
+function cocktail_sort(vector) {
+  var actual, comienzo, dirección, fin, permutation;
+  [permutation, dirección, actual] = [true, 1, 0];
+  [comienzo, fin] = [0, vector.length - 2];
+
+  while (permutation === true) {
+    permutation = false;
+
+    while (actual < fin && dirección === 1 || actual > comienzo && dirección === -1) {
+      if (vector[actual] > vector[actual + 1]) {
+        permutation = true;
+        [vector[actual], vector[actual + 1]] = [vector[actual + 1], vector[actual]];
+      }
+
+      actual = actual + dirección;
+    }
+
+    if (dirección === 1) {
+      fin = fin - 1;
+    } else {
+      comienzo = comienzo + 1;
+    }
+
+    dirección = -dirección;
+  }
+
+  return vector;
+}
+var array = [5, 4, 6, 10, 0, 7, 12, 1, 9, 8];
+
+document.write("el ordenamiento inicial es: " + array + "<br>");
+cocktail_sort(array)
+
+document.write("La lista ordenada por burbuja bidireccional es: " + array + "<br>");
+</script>
+</head>
+<body>
+
+</body>
+</html>
