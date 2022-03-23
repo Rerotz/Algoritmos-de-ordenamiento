@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento shell</title>
+    <script type="text/javascript">
+        let vector = [8,5,3,9,1,4,7]
+        function comb_sort(vector){
+            var permutacion= "true";
+            var gap = vector.length;
+            while (permutacion==true || gap>1) {
+
+              permutacion= "false";
+              gap = Math.floor(gap/1.3);
+              if (gap<1){
+                gap=1;
+              for(var actual=0;actual<20-gap;actual++) {
+                if(vector[actual]=>vector[actual+gap]){
+                  permutacion="flase";
+                  var temp=vector[actual];
+                  vector[actual]=vector[actual+gap];
+                  vector[actual+gap]=temp;
+                }
+              }
+              }    
+            }
+            document.getElementById("lblResultado").innerHTML= + vector;
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Ordenamiento peine</h1>
+    <h>lista de numeros para ordenar:</h>
+    <h>[8,5,3,9,1,4,7]</h>
+    <p>
+        <button type="button" onclick="comb_sort()">ordenar</button>
+        
+    </p>
+    <p id = "lblResultado"></p>
+    
+</body>
+</html>
